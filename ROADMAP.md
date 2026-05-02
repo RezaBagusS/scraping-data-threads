@@ -9,9 +9,9 @@ Dokumen ini merinci langkah-langkah pengembangan sistem otomasi pengumpulan data
 - [x] Pembuatan struktur folder project (tests, resources, results, data).
 
 ## 🔐 Fase 2: Otentikasi & Navigasi
-- [ ] Implementasi flow login Threads (Instagram Login).
-- [ ] Penanganan verifikasi dua langkah (jika diperlukan).
-- [ ] Manajemen session/cookies untuk menghindari login berulang.
+- [x] Implementasi flow login Threads (Instagram Login).
+- [x] Penanganan verifikasi dua langkah (jika diperlukan).
+- [x] Manajemen session/cookies untuk menghindari login berulang.
 - [ ] Pembuatan keyword untuk navigasi ke halaman pencarian atau topik spesifik.
 
 ## 🔍 Fase 3: Ekstraksi Data (Core)

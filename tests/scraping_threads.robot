@@ -1,16 +1,26 @@
 *** Settings ***
-Documentation    Otomasi scraping data dari Threads.net menggunakan SeleniumLibrary.
+Documentation    Otomasi pengumpulan data kendala UMKM dari Threads (Fase 2 & 3).
 Resource         ../resources/keywords.resource
 
 *** Variables ***
-${URL_THREADS}    https://www.threads.net
-${SEARCH_TOPIC}   teknologi AI
+${BROWSER}        headlesschrome
+${TOPIC}          kendala bisnis UMKM
 
 *** Test Cases ***
-Scrape Threads By Topic
-    [Documentation]    Mencari dan mengumpulkan data postingan dari Threads.
-    Setup Browser    ${URL_THREADS}
-    Wait Until Page Contains Element    xpath=//main    timeout=10s
-    Log    Halaman Threads berhasil dibuka.
-    # Langkah selanjutnya: Pencarian topik (Fase 2-3)
+Execute Full Scraping For UMKM Research
+    [Documentation]    Menjalankan proses lengkap: Login, Navigasi, dan Ekstraksi Data.
+    Setup Browser    https://www.threads.net    browser=${BROWSER}
+    
+    # Fase 2: Otentikasi
+    Login To Threads
+    
+    # Fase 2: Navigasi
+    Search Threads For Topic    ${TOPIC}
+    
+    # Fase 3: Ekstraksi Data (Core)
+    Log    Memulai proses pengambilan data...
+    Scroll Down And Collect Data    scroll_count=3
+    Extract Threads Post Data
+    
+    Log    Data berhasil dikumpulkan di folder data/
     [Teardown]    Close Browser Session
