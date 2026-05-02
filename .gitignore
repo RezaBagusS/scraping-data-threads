@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env/
+
+# Robot Framework
+results/
+log.html
+report.html
+output.xml
+browser/
+
+# Data
+data/*.csv
+data/*.json
+data/*.xlsx
+
+# OS
+.DS_Store
