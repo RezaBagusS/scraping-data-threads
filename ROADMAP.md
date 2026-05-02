@@ -3,10 +3,10 @@
 Dokumen ini merinci langkah-langkah pengembangan sistem otomasi pengumpulan data dari Threads menggunakan **Robot Framework**.
 
 ## 🚀 Fase 1: Inisialisasi & Lingkungan Kerja
-- [ ] Setup lingkungan Python dan Virtual Environment.
-- [ ] Instalasi Robot Framework dan library pendukung (`robotframework-browser` atau `robotframework-seleniumlibrary`).
-- [ ] Konfigurasi Driver (Playwright/Chromium).
-- [ ] Pembuatan struktur folder project (tests, resources, results, data).
+- [x] Setup lingkungan Python dan Virtual Environment.
+- [x] Instalasi Robot Framework dan library pendukung (`robotframework-seleniumlibrary`).
+- [x] Konfigurasi Driver (Selenium Manager/Chromedriver).
+- [x] Pembuatan struktur folder project (tests, resources, results, data).
 
 ## 🔐 Fase 2: Otentikasi & Navigasi
 - [ ] Implementasi flow login Threads (Instagram Login).
