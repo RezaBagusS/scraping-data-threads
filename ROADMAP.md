@@ -1,38 +1,22 @@
 # 📍 Roadmap: Threads Scraper Automation
 
-Dokumen ini merinci langkah-langkah pengembangan sistem otomasi pengumpulan data dari Threads menggunakan **Robot Framework**.
+## 🚀 Fase 1-3: Fondasi & Ekstraksi (SELESAI)
+- [x] Setup lingkungan & Robot Framework.
+- [x] Otomasi Login & Penanganan Dynamic UI.
+- [x] Implementasi Pencarian Topik & Infinite Scroll.
+- [x] Ekstraksi Konten Postingan.
 
-## 🚀 Fase 1: Inisialisasi & Lingkungan Kerja
-- [x] Setup lingkungan Python dan Virtual Environment.
-- [x] Instalasi Robot Framework dan library pendukung (`robotframework-seleniumlibrary`).
-- [x] Konfigurasi Driver (Selenium Manager/Chromedriver).
-- [x] Pembuatan struktur folder project (tests, resources, results, data).
+## 💾 Fase 4: Manajemen Data (SELESAI)
+- [x] Konversi data mentah ke format CSV yang rapi.
+- [x] Pembersihan karakter khusus (Quotes, Newlines, Commas).
+- [x] Filter otomatis untuk teks pendek dan elemen non-postingan.
 
-## 🔐 Fase 2: Otentikasi & Navigasi
-- [x] Implementasi flow login Threads (Instagram Login).
-- [x] Penanganan verifikasi dua langkah (Integrasi manual/Wait).
-- [x] Manajemen session/cookies (Implementasi awal via .env).
-- [x] Pembuatan keyword untuk navigasi ke halaman pencarian atau topik spesifik.
+## 🛠️ Fase 5: Optimasi & Skalabilitas (BERJALAN)
+- [ ] **Multi-Keyword Search**: Mencari beberapa kata kunci dalam satu kali jalan.
+- [ ] **Metadata Extraction**: Mencoba mengambil Timestamp atau Like (Jika struktur stabil).
+- [x] **Stability Fix**: Penanganan error pada kondisi IF untuk teks panjang.
+- [ ] **Headless Mode**: Menjalankan bot tanpa membuka jendela browser (untuk server).
 
-## 🔍 Fase 3: Ekstraksi Data (Core)
-- [x] Pengembangan script untuk mencari keyword/topik tertentu.
-- [x] Implementasi *infinite scroll* untuk memuat lebih banyak post.
-- [x] Ekstraksi elemen data (Username & Konten teks).
-- [ ] Ekstraksi elemen data tambahan (Timestamp, Likes, Replies).
-- [ ] Penanganan elemen dinamis (Skeleton screens/Lazy loading).
-
-## 💾 Fase 4: Manajemen Data & Output
-- [ ] Integrasi library untuk penyimpanan data (CSV, JSON, atau Excel).
-- [ ] Pembersihan data (cleaning) dasar saat proses scraping.
-- [ ] Organisasi file output berdasarkan timestamp atau topik.
-
-## 🛠️ Fase 5: Optimasi & Error Handling
-- [x] Implementasi *Wait strategies* yang efisien (Wait Until Page Contains).
-- [ ] Error handling untuk elemen yang tidak ditemukan atau timeout.
-- [x] Penyesuaian *Human-like behavior* (User-Agent kustom & Random Delay).
-- [x] Konfigurasi headless mode untuk eksekusi yang lebih ringan.
-
-## 📊 Fase 6: Reporting & Penunjang
-- [x] Kustomisasi Robot Framework Report & Log (Default output aktif).
-- [x] Dokumentasi akhir penggunaan script (README updated).
-- [ ] (Optional) Integrasi dengan dashboard visualisasi data sederhana.
+## 📊 Fase 6: Analisis (AKAN DATANG)
+- [ ] Integrasi dengan script Python (Pandas) untuk analisis frekuensi kata (Word Cloud).
+- [ ] Kategorisasi kendala UMKM secara otomatis berdasarkan kata kunci.

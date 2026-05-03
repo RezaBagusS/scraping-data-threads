@@ -1,26 +1,24 @@
 *** Settings ***
-Documentation    Otomasi pengumpulan data kendala UMKM dari Threads (Fase 2 & 3).
+Documentation    Otomasi Pengumpulan Data Threads - Fase 3 & 4.
 Resource         ../resources/keywords.resource
 
 *** Variables ***
-${BROWSER}        headlesschrome
-${TOPIC}          kendala bisnis UMKM
+${TOPIC}         UMKM
 
 *** Test Cases ***
-Execute Full Scraping For UMKM Research
-    [Documentation]    Menjalankan proses lengkap: Login, Navigasi, dan Ekstraksi Data.
-    Setup Browser    https://www.threads.net    browser=${BROWSER}
+Execute Full Scraping And Data Management
+    [Documentation]    Alur lengkap: Login -> Cari -> Scrape -> Simpan ke CSV.
+    Setup Browser    https://www.threads.com
     
-    # Fase 2: Otentikasi
     Login To Threads
     
-    # Fase 2: Navigasi
     Search Threads For Topic    ${TOPIC}
     
-    # Fase 3: Ekstraksi Data (Core)
-    Log    Memulai proses pengambilan data...
-    Scroll Down And Collect Data    scroll_count=3
+    # Scroll lebih banyak untuk data yang lebih kaya
+    Scroll Down And Collect Data    scroll_count=5
+    
     Extract Threads Post Data
     
-    Log    Data berhasil dikumpulkan di folder data/
+    Format Data To CSV
+    
     [Teardown]    Close Browser Session

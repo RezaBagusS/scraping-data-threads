@@ -1,73 +1,48 @@
-# 🧵 Threads Data Scraper Automation
+# 🧵 Threads Scraper for UMKM Research
 
-Proyek ini bertujuan untuk mengumpulkan data dari platform **Threads.net** secara otomatis menggunakan **Robot Framework**. Otomasi ini difokuskan pada pengumpulan data terkait kendala UMKM untuk riset pengembangan produk.
+Bot otomasi menggunakan **Robot Framework** untuk mengumpulkan data kualitatif dari Threads.net mengenai kendala, tips, dan aktivitas bisnis UMKM.
 
-## 🛠️ Tech Stack
-- **Language:** Python 3.x
-- **Framework:** [Robot Framework](https://robotframework.org/)
-- **Library:** [SeleniumLibrary](https://robotframework.org/SeleniumLibrary/)
-- **Driver Management:** [Webdriver-manager](https://pypi.org/project/webdriver-manager/)
-- **Reporting:** Built-in Robot Framework HTML reports
+## 🚀 Fitur Utama
+- **Automated Login**: Login otomatis menggunakan kredensial dari file `.env`.
+- **Topic Search**: Mencari postingan berdasarkan kata kunci tertentu (contoh: "UMKM").
+- **Infinite Scrolling**: Menggulir halaman secara otomatis untuk memuat lebih banyak data.
+- **Data Cleaning**: Menghapus baris kosong, meratakan baris baru, dan membersihkan karakter khusus.
+- **Structured Output**: Menyimpan hasil akhir dalam format **CSV** (`data/threads_umkm_data.csv`).
 
-## 📋 Fitur Utama
-- **Login Automation:** Melakukan login otomatis ke Threads menggunakan kredensial Instagram.
-- **Topik-Based Search:** Mencari postingan berdasarkan keyword tertentu (misal: "kendala UMKM").
-- **Infinite Scrolling:** Menggulir halaman secara otomatis untuk mengambil data dalam jumlah banyak.
-- **Human-Like Behavior:** Menggunakan User-Agent kustom dan jeda waktu acak untuk meminimalisir deteksi bot.
-
-## ⚙️ Persyaratan Sistem
-1. Python 3.9 atau versi terbaru.
-2. Google Chrome terinstal di sistem.
-
-## 🚀 Cara Instalasi
-
-1. Masuk ke folder project:
-   ```bash
-   cd scraping-data
-   ```
-
-2. Buat dan aktifkan virtual environment:
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # Mac/Linux
-   # atau
-   venv\Scripts\activate     # Windows
-   ```
-
-3. Instal dependensi:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Konfigurasi Kredensial:
-   Buat file `.env` di root folder dan isi dengan akun Instagram/Threads Anda:
+## 🛠️ Prasyarat
+1. **Python 3.x** terinstal.
+2. **Google Chrome** terinstal.
+3. Kredensial Threads sudah diatur di file `.env`:
    ```env
    THREADS_USERNAME=username_anda
    THREADS_PASSWORD=password_anda
    ```
 
-## 🖥️ Cara Menjalankan
-Untuk menjalankan proses scraping dengan memuat variabel dari `.env`:
-
+## 📦 Instalasi
 ```bash
-# Mac/Linux
-export $(grep -v '^#' .env | xargs) && robot -d results tests/scraping_threads.robot
+# Masuk ke folder project
+cd scraping-data
 
-# Windows (PowerShell)
-# Silakan isi variabel lingkungan secara manual atau gunakan library dotenv
+# Buat & Aktifkan Virtual Environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Instal Library
+pip install robotframework-seleniumlibrary
+```
+
+## 🏃 Cara Menjalankan
+Pastikan Chrome dalam keadaan tertutup (Force Quit) agar tidak terjadi konflik sesi, lalu jalankan:
+```bash
+source venv/bin/activate
+export $(grep -v '^#' .env | xargs)
 robot -d results tests/scraping_threads.robot
 ```
 
-## 📂 Struktur Folder
-```text
-scraping-data/
-├── tests/              # Skrip utama (.robot)
-├── resources/          # Keyword kustom dan logika Selenium
-├── data/               # Hasil output scraping (txt/csv)
-├── results/            # Log dan laporan Robot Framework
-├── ROADMAP.md          # Rencana pengembangan project
-└── README.md           # Dokumentasi utama
-```
+## 📊 Output Data
+Hasil scraping akan tersimpan di:
+1. `data/raw_data_umkm.txt`: Teks mentah asli dari Threads.
+2. `data/threads_umkm_data.csv`: Teks yang sudah rapi dan siap dibuka di Excel/Google Sheets.
 
-## ⚠️ Disclaimer
-Project ini dibuat untuk tujuan edukasi dan riset. Pengguna bertanggung jawab penuh atas kepatuhan terhadap *Terms of Service* dari Threads/Meta terkait scraping data. Gunakan akun dummy untuk menghindari risiko pembatasan akun.
+## ⚖️ Disclaimer
+Gunakan bot ini dengan bijak dan patuhi kebijakan privasi serta ketentuan penggunaan Threads.net. Bot ini dibuat untuk tujuan riset akademis/pengembangan produk.
