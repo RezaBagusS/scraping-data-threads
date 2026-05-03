@@ -1,24 +1,26 @@
 *** Settings ***
-Documentation    Otomasi Pengumpulan Data Threads - Fase 3 & 4.
+Documentation    Otomasi Pengumpulan Data Threads - Multi-Keyword Scraping.
 Resource         ../resources/keywords.resource
 
 *** Variables ***
-${TOPIC}         UMKM
+# Daftar kata kunci riset UMKM
+@{KEYWORDS}      UMKM    kendala bisnis    modal usaha    masalah UMKM    solusi dagang
 
 *** Test Cases ***
-Execute Full Scraping And Data Management
-    [Documentation]    Alur lengkap: Login -> Cari -> Scrape -> Simpan ke CSV.
+Execute Multi-Keyword Scraping
+    [Documentation]    Menjalankan pencarian untuk banyak kata kunci sekaligus.
     Setup Browser    https://www.threads.com
     
     Login To Threads
     
-    Search Threads For Topic    ${TOPIC}
+    # Loop untuk setiap kata kunci
+    FOR    ${keyword}    IN    @{KEYWORDS}
+        Search Threads For Topic    ${keyword}
+        Scroll Down And Collect Data    scroll_count=3
+        Extract Threads Post Data
+    END
     
-    # Scroll lebih banyak untuk data yang lebih kaya
-    Scroll Down And Collect Data    scroll_count=5
-    
-    Extract Threads Post Data
-    
+    # Setelah semua selesai, rapikan ke CSV
     Format Data To CSV
     
     [Teardown]    Close Browser Session

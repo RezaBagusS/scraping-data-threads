@@ -4,10 +4,10 @@ Bot otomasi menggunakan **Robot Framework** untuk mengumpulkan data kualitatif d
 
 ## 🚀 Fitur Utama
 - **Automated Login**: Login otomatis menggunakan kredensial dari file `.env`.
-- **Topic Search**: Mencari postingan berdasarkan kata kunci tertentu (contoh: "UMKM").
+- **Multi-Keyword Search**: Mendukung pencarian banyak kata kunci sekaligus (contoh: "UMKM", "kendala bisnis", "modal usaha").
 - **Infinite Scrolling**: Menggulir halaman secara otomatis untuk memuat lebih banyak data.
-- **Data Cleaning**: Menghapus baris kosong, meratakan baris baru, dan membersihkan karakter khusus.
-- **Structured Output**: Menyimpan hasil akhir dalam format **CSV** (`data/threads_umkm_data.csv`).
+- **Data Cleaning**: Menghapus baris kosong, meratakan baris baru, dan membersihkan karakter khusus agar aman untuk CSV.
+- **Structured Output**: Menyimpan hasil gabungan semua kata kunci ke dalam **CSV** (`data/threads_umkm_data.csv`).
 
 ## 🛠️ Prasyarat
 1. **Python 3.x** terinstal.
@@ -39,10 +39,8 @@ export $(grep -v '^#' .env | xargs)
 robot -d results tests/scraping_threads.robot
 ```
 
-## 📊 Output Data
-Hasil scraping akan tersimpan di:
-1. `data/raw_data_umkm.txt`: Teks mentah asli dari Threads.
-2. `data/threads_umkm_data.csv`: Teks yang sudah rapi dan siap dibuka di Excel/Google Sheets.
+## 📊 Konfigurasi Kata Kunci
+Anda dapat mengubah daftar kata kunci pencarian di file `tests/scraping_threads.robot` pada bagian `@{KEYWORDS}`.
 
 ## ⚖️ Disclaimer
 Gunakan bot ini dengan bijak dan patuhi kebijakan privasi serta ketentuan penggunaan Threads.net. Bot ini dibuat untuk tujuan riset akademis/pengembangan produk.
